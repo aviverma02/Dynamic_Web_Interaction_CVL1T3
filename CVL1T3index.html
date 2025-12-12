@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3: Introduction to JavaScript</title>
+    <link rel="stylesheet" href="CVL1T3styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> Dynamic Web Interactions with JavaScript</h1>
+            <p>Interactive Elements Demonstration</p>
+        </div>
+
+        <div class="content">
+            <!-- Dropdown Section -->
+            <div class="section">
+                <h2>1. Interactive Dropdown Menu</h2>
+                <p>Click the button below to reveal navigation options:</p>
+                <div class="dropdown-container">
+                    <button class="dropdown-btn" onclick="toggleDropdown()">
+                        Navigation Menu ▼
+                    </button>
+                    <div id="dropdownContent" class="dropdown-content">
+                        <a href="#" onclick="navigateToPage('home'); return false;">🏠 Home</a>
+                        <a href="#" onclick="navigateToPage('about'); return false;">ℹ️ About Us</a>
+                        <a href="#" onclick="navigateToPage('services'); return false;">⚙️ Services</a>
+                        <a href="#" onclick="navigateToPage('portfolio'); return false;">🎨 Portfolio</a>
+                        <a href="#" onclick="navigateToPage('blog'); return false;">📝 Blog</a>
+                        <a href="#" onclick="navigateToPage('team'); return false;">👥 Team</a>
+                        <a href="#" onclick="navigateToPage('contact'); return false;">📞 Contact</a>
+                    </div>
+                </div>
+                <div id="navOutput" class="output-box"></div>
+            </div>
+
+            <!-- Modal Section -->
+            <div class="section">
+                <h2>2. Modal Dialog</h2>
+                <p>Click the button to open an interactive modal window:</p>
+                <button class="btn-primary" onclick="openModal()">Open Modal</button>
+            </div>
+
+            <!-- Form Validation Section -->
+            <div class="section">
+                <h2>3. Form with Validation</h2>
+                <form id="registrationForm" onsubmit="validateForm(event)">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name">
+                        <span id="nameError" class="error">Name must be at least 3 characters</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                        <span id="emailError" class="error">Please enter a valid email address</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" placeholder="Enter 10-digit phone number">
+                        <span id="phoneError" class="error">Phone number must be 10 digits</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" placeholder="Enter your age">
+                        <span id="ageError" class="error">Age must be between 18 and 100</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country *</label>
+                        <select id="country">
+                            <option value="">Select your country</option>
+                            <option value="USA">United States</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                            <option value="India">India</option>
+                            <option value="Australia">Australia</option>
+                        </select>
+                        <span id="countryError" class="error">Please select a country</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" placeholder="Enter your message (optional)"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Submit Form</button>
+                    <button type="button" class="btn-secondary" onclick="resetForm()">Reset</button>
+                    
+                    <div id="successMessage" class="success">
+                        Form submitted successfully! ✓
+                    </div>
+                </form>
+            </div>
+
+            <!-- Event Listeners Section -->
+            <div class="section">
+                <h2>4. Event Listeners & Functions</h2>
+                <p>Interactive counter with multiple event handlers:</p>
+                <div class="counter-display" id="counter">0</div>
+                <div class="btn-group">
+                    <button class="btn-primary" onclick="incrementCounter()">Increment (+1)</button>
+                    <button class="btn-primary" onclick="decrementCounter()">Decrement (-1)</button>
+                    <button class="btn-secondary" onclick="resetCounter()">Reset</button>
+                    <button class="btn-primary" onclick="incrementByFive()">Add 5</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal HTML with Multiple Pages -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <!-- Modal Page 1: Introduction -->
+            <div id="modalPage1" class="modal-page active-page">
+                <div class="modal-header">
+                    <h2>Welcome to the Modal!</h2>
+                    <p class="modal-subtitle">Interactive Dialog System</p>
+                </div>
+                <div class="modal-body">
+                    <p>This is an interactive modal dialog created with JavaScript. Modals are useful for:</p>
+                    <ul class="modal-features">
+                        <li><span class="icon">✓</span> Displaying important information</li>
+                        <li><span class="icon">✓</span> Confirming user actions</li>
+                        <li><span class="icon">✓</span> Showing forms or dialogs</li>
+                        <li><span class="icon">✓</span> Providing alerts and notifications</li>
+                    </ul>
+                    <p style="margin-top: 20px; color: #666;">This modal has multiple interactive pages. Click "Next" to explore more features!</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="closeModal()">Close</button>
+                    <button class="btn-primary" onclick="goToModalPage(2)">Next →</button>
+                </div>
+            </div>
+
+            <!-- Modal Page 2: Features -->
+            <div id="modalPage2" class="modal-page">
+                <div class="modal-header">
+                    <h2>Modal Features</h2>
+                    <p class="modal-subtitle">Explore What's Possible</p>
+                </div>
+                <div class="modal-body">
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">🎯</div>
+                            <h3>Navigation</h3>
+                            <p>Move between pages with smooth transitions</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Fast & Responsive</h3>
+                            <p>Quick page switching with no delays</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🛡️</div>
+                            <h3>User-Friendly</h3>
+                            <p>Intuitive interface with clear controls</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">💡</div>
+                            <h3>Interactive</h3>
+                            <p>Engage with dynamic content</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="goToModalPage(1)">← Back</button>
+                    <button class="btn-primary" onclick="goToModalPage(3)">Next →</button>
+                </div>
+            </div>
+
+            <!-- Modal Page 3: Information -->
+            <div id="modalPage3" class="modal-page">
+                <div class="modal-header">
+                    <h2>JavaScript Modal System</h2>
+                    <p class="modal-subtitle">Advanced Interaction Demo</p>
+                </div>
+                <div class="modal-body">
+                    <div class="info-section">
+                        <h3>🔧 Technical Details</h3>
+                        <p>This modal dialog showcases modern JavaScript techniques including:</p>
+                        <ul class="tech-list">
+                            <li>DOM manipulation for page transitions</li>
+                            <li>CSS animations for smooth effects</li>
+                            <li>Event handling for user interactions</li>
+                            <li>State management for page navigation</li>
+                        </ul>
+                    </div>
+                    <div class="info-section">
+                        <h3>📱 Responsive Design</h3>
+                        <p>Fully optimized for desktop, tablet, and mobile devices. The modal adapts to any screen size.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="goToModalPage(2)">← Back</button>
+                    <button class="btn-primary" onclick="goToModalPage(4)">Next →</button>
+                </div>
+            </div>
+
+            <!-- Modal Page 4: Contact/Action -->
+            <div id="modalPage4" class="modal-page">
+                <div class="modal-header">
+                    <h2>Get Started</h2>
+                    <p class="modal-subtitle">Ready to Learn More?</p>
+                </div>
+                <div class="modal-body">
+                    <div class="cta-section">
+                        <p>You've explored the modal system! Here are your next steps:</p>
+                        <div class="cta-buttons">
+                            <button class="cta-btn cta-btn-primary" onclick="handleCTA('explore')">
+                                <span class="cta-icon">🚀</span>
+                                <span>Explore More</span>
+                            </button>
+                            <button class="cta-btn cta-btn-secondary" onclick="handleCTA('learn')">
+                                <span class="cta-icon">📚</span>
+                                <span>Learn JavaScript</span>
+                            </button>
+                            <button class="cta-btn cta-btn-tertiary" onclick="handleCTA('practice')">
+                                <span class="cta-icon">✏️</span>
+                                <span>Practice Coding</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="ctaMessage" class="cta-message" style="display: none;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-secondary" onclick="goToModalPage(3)">← Back</button>
+                    <button class="btn-primary" onclick="closeModal()">Close Modal</button>
+                </div>
+            </div>
+
+            <!-- Modal Progress Indicator -->
+            <div class="modal-progress">
+                <div class="progress-dots">
+                    <span class="dot active" onclick="goToModalPage(1)"></span>
+                    <span class="dot" onclick="goToModalPage(2)"></span>
+                    <span class="dot" onclick="goToModalPage(3)"></span>
+                    <span class="dot" onclick="goToModalPage(4)"></span>
+                </div>
+                <span class="progress-text"><span id="currentPage">1</span>/4</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Pages -->
+    <div id="navPages">
+        <!-- Back to main site button -->
+        <button id="navCloseBtn" class="nav-back-btn" onclick="closeNavPages()">← Back to Site</button>
+        <!-- Home Page -->
+        <div id="homePage" class="nav-page active-nav-page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>🏠 Welcome Home</h1>
+                    <p>Explore our interactive JavaScript demonstrations</p>
+                </div>
+                <div class="page-content">
+                    <p>This is your home page. You've successfully navigated using our backend system. Click the menu button to explore other sections!</p>
+                    <button class="page-btn" onclick="navigateToPage('services')">Explore Services →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Us Page -->
+        <div id="aboutPage" class="nav-page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>ℹ️ About Us</h1>
+                    <p>Learn more about our mission</p>
+                </div>
+                <div class="page-content">
+                    <h3>Our Story</h3>
+                    <p>We are dedicated to making web development interactive and engaging through practical demonstrations and real-world examples.</p>
+                    <h3>Our Mission</h3>
+                    <p>To provide comprehensive JavaScript learning experiences with hands-on interactive elements that help developers master modern web technologies.</p>
+                    <h3>Core Values</h3>
+                    <ul class="page-list">
+                        <li>Innovation in web development</li>
+                        <li>User-centric design</li>
+                        <li>Continuous learning</li>
+                        <li>Community collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Page -->
+        <div id="servicesPage" class="nav-page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>⚙️ Our Services</h1>
+                    <p>What we offer</p>
+                </div>
+                <div class="page-content">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">🎓</div>
+                            <h3>Web Development Training</h3>
+                            <p>Learn HTML, CSS, and JavaScript from scratch with interactive examples.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🔧</div>
+                            <h3>JavaScript Frameworks</h3>
+                            <p>Master React, Vue, and Angular with hands-on projects and demonstrations.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🎨</div>
+                            <h3>UI/UX Design</h3>
+                            <p>Create beautiful, responsive interfaces with modern design principles.</p>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-icon">🚀</div>
+                            <h3>Project Development</h3>
+                            <p>Build complete web applications from concept to deployment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Page -->
+        <div id="portfolioPage" class="nav-page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>🎨 Our Portfolio</h1>
+                    <p>Showcase of our best work</p>
+                </div>
+                <div class="page-content">
+                    <div class="portfolio-grid">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">E-Commerce Platform</div>
+                            <h3>E-Commerce Website</h3>
+                            <p>Full-featured shopping platform with payment integration.</p>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">Social Network</div>
+                            <h3>Social Network App</h3>
+                            <p>Interactive social media platform with real-time features.</p>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">Analytics Dashboard</div>
+                            <h3>Analytics Dashboard</h3>
+                            <p>Advanced data visualization and reporting system.</p>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">Mobile App</div>
+                            <h3>Mobile Application</h3>
+                            <p>Cross-platform mobile app with native performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Page -->
+        <div id="blogPage" class="nav-page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>📝 Our Blog</h1>
+                    <p>Latest articles and tutorials</p>
+                </div>
+                <div class="page-content">
+                    <div class="blog-grid">
+                        <article class="blog-post">
+                            <h3>Getting Started with JavaScript</h3>
+                            <p class="blog-date">Published on Dec 1, 2025</p>
+                            <p>Learn the fundamentals of JavaScript and how to apply them in real-world projects.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </article>
+                        <article class="blog-post">
+                            <h3>Advanced DOM Manipulation</h3>
+                            <p class="blog-date">Published on Nov 28, 2025</p>
+                            <p>Master advanced techniques for manipulating the DOM efficiently and effectively.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </article>
+                        <article class="blog-post">
+                            <h3>Building Interactive Web Apps</h3>
+                            <p class="blog-date">Published on Nov 25, 2025</p>
+                            <p>Explore modern techniques for creating engaging and interactive web applications.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </article>
+                        <article class="blog-post">
+                            <h3>Web Performance Optimization</h3>
+                            <p class="blog-date">Published on Nov 20, 2025</p>
+                            <p>Tips and tricks to optimize your website for better performance and user experience.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Page -->
+        <div id="teamPage" class="nav-page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>👥 Our Team</h1>
+                    <p>Meet the talented people behind our success</p>
+                </div>
+                <div class="page-content">
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar">AV</div>
+                            <h3>Avinash Verma</h3>
+                            <p class="member-role">Lead Developer</p>
+                            <p>Expert in JavaScript and web development with 5+ years experience.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">JS</div>
+                            <h3>Jane Smith</h3>
+                            <p class="member-role">UI/UX Designer</p>
+                            <p>Creative designer specializing in user experience and interface design.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">MJ</div>
+                            <h3>Mike Johnson</h3>
+                            <p class="member-role">Full Stack Developer</p>
+                            <p>Skilled in both frontend and backend development with cloud expertise.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">SP</div>
+                            <h3>Sarah Parker</h3>
+                            <p class="member-role">Project Manager</p>
+                            <p>Experienced in managing complex projects and leading teams efficiently.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contactPage" class="nav-page">
+            <div class="page-container">
+                <div class="page-header">
+                    <h1>📞 Contact Us</h1>
+                    <p>Get in touch with our team</p>
+                </div>
+                <div class="page-content">
+                    <div class="contact-info-grid">
+                        <div class="contact-info">
+                            <h3>📧 Email</h3>
+                            <p>hello@example.com</p>
+                        </div>
+                        <div class="contact-info">
+                            <h3>📱 Phone</h3>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                        <div class="contact-info">
+                            <h3>📍 Location</h3>
+                            <p>123 Web Street, Tech City, TC 12345</p>
+                        </div>
+                        <div class="contact-info">
+                            <h3>🕐 Hours</h3>
+                            <p>Mon-Fri: 9AM - 6PM EST</p>
+                        </div>
+                    </div>
+                    <button class="page-btn" onclick="navigateToPage('services')">Back to Services</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Page -->
+    <div id="successPage" class="success-page">
+        <div class="success-page-container">
+            <div class="success-header">
+                <div class="checkmark-circle">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="2"/>
+                        <polyline points="30,55 45,70 70,35" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h1>Registration Successful!</h1>
+                <p class="subtitle">Your information has been submitted successfully</p>
+            </div>
+
+            <div class="success-content">
+                <div class="submitted-data">
+                    <h2>Submitted Information</h2>
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <label>Full Name</label>
+                            <p id="displayName"></p>
+                        </div>
+                        <div class="data-item">
+                            <label>Email Address</label>
+                            <p id="displayEmail"></p>
+                        </div>
+                        <div class="data-item">
+                            <label>Phone Number</label>
+                            <p id="displayPhone"></p>
+                        </div>
+                        <div class="data-item">
+                            <label>Age</label>
+                            <p id="displayAge"></p>
+                        </div>
+                        <div class="data-item">
+                            <label>Country</label>
+                            <p id="displayCountry"></p>
+                        </div>
+                        <div class="data-item full-width">
+                            <label>Message</label>
+                            <p id="displayMessage"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submission-summary">
+                    <h3>Submission Summary</h3>
+                    <div class="summary-stats">
+                        <div class="stat-box">
+                            <span class="stat-icon">✓</span>
+                            <span class="stat-text">All fields validated</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-icon">💾</span>
+                            <span class="stat-text">Data stored successfully</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-icon">📅</span>
+                            <span class="stat-text" id="submissionTime"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary" onclick="submitAnother()">Submit Another Form</button>
+                    <button class="btn-secondary" onclick="goBack()">Back to Page</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="CVL1T3script.js"></script>
+</body>
+</html>
