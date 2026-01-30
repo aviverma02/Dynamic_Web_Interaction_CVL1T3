@@ -14,7 +14,7 @@ A dynamic dropdown navigation menu that uses JavaScript to toggle visibility and
 
 2. Modal Dialog Box
 
-A clean and responsive modal window triggered using JavaScript event listeners and DOM manipulation. 
+A clean and responsive modal window triggered using JavaScript event listeners and DOM manipulation.  
 
 3. Form with Validation
 
