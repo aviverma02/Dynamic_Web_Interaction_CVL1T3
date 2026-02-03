@@ -1,5 +1,5 @@
 # Dynamic_Web_Interaction_C1L1T3
-Interactive UI elements built using HTML, CSS, and JavaScript — including dropdown menus, modal dialogs, and form validation.
+Interactive UI elements built using HTML, CSS, and JavaScript — including dropdown menus, modal dialogs, and form validation.  
 Dynamic Web Interactions with JavaScript
 
 A collection of interactive UI components built using HTML, CSS, and vanilla JavaScript, demonstrating how to add dynamic behavior to modern web pages. 
