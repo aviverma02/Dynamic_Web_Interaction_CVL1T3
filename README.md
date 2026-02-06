@@ -10,7 +10,7 @@ This project showcases three essential interactive elements used in front-end de
 
 1. Interactive Dropdown Menu
 
-A dynamic dropdown navigation menu that uses JavaScript to toggle visibility and update navigation output. 
+A dynamic dropdown navigation menu that uses JavaScript to toggle visibility and update navigation output.  
 
 2. Modal Dialog Box
 
