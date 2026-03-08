@@ -4,7 +4,7 @@ Dynamic Web Interactions with JavaScript
 
 A collection of interactive UI components built using HTML, CSS, and vanilla JavaScript, demonstrating how to add dynamic behavior to modern web pages. 
 
-🚀 Project Overview
+🚀 Project Overview 
 
 This project showcases three essential interactive elements used in front-end development: 
 
